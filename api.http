@@ -8,3 +8,13 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:3333/events/0b6ed62a-59eb-469e-b037-dd9cb2c56426/attendees
+Content-Type: application/json
+
+{
+  "name": "Testington Joe",
+  "email": "testmaster123@gmail.com"
+}
+
+###
