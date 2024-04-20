@@ -2,6 +2,7 @@ import { fastify } from "fastify";
 import {serializerCompiler, validatorCompiler} from 'fastify-type-provider-zod'
 import { createEvent } from "./routes/create-event.js";
 import { registerForEvent } from "./routes/register-for-event.js";
+import { getEvent } from "./routes/get-event.js";
 
 const app = fastify()
 
@@ -10,6 +11,7 @@ app.setValidatorCompiler(validatorCompiler)
 
 app.register(createEvent)
 app.register(registerForEvent)
+app.register(getEvent)
 
 app.listen({
   host: "0.0.0.0",
