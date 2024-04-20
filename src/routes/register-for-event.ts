@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { prisma } from "../lib/prisma.js";
-import { customAlphabet } from "nanoid";
+import { customNanoId } from "../utils/generate-custom-nanoid.js";
 
 export async function registerForEvent(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post('/events/:eventId/attendees', {
@@ -61,14 +61,10 @@ export async function registerForEvent(app: FastifyInstance) {
   if(event?.maximumAttendees && unavaliableIdsList.length >= event.maximumAttendees){
     throw new Error("This event has reached it's maximum attendees limit");
   }
-    
-    //Generates an id using only the defined allowed characters
-    const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const nanoid = customAlphabet(alphabet, 12);
-    let attendeeId = nanoid() //=> Ex: "ID8LBvumciN2"
+    let attendeeId = customNanoId()
 
     while(unavaliableIdsList.includes(attendeeId)){
-      attendeeId = nanoid()
+      attendeeId = customNanoId()
     }
 
     const registeredAttendee = await prisma.attendee.create({
