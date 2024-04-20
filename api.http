@@ -2,19 +2,25 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Unite Summit",
-  "details": "Um evento pra quem é apaixonado por programação",
-  "maximumAttendees": 100
+  "title": "Event with no attendees",
+  "details": null,
+  "maximumAttendees": null
 }
 
 ###
 
-POST http://localhost:3333/events/0b6ed62a-59eb-469e-b037-dd9cb2c56426/attendees
+POST http://localhost:3333/events/413a2383-d4c2-4228-b4c1-53e02953926e/attendees
 Content-Type: application/json
 
 {
-  "name": "Testington Joe",
-  "email": "testmaster123@gmail.com"
+  "name": "Mano dos testes",
+  "email": "mano.teste@testingdudes.com"
 }
 
 ###
+
+GET http://localhost:3333/events/e611a6d7-5238-4db7-b34c-a7d6c0057ca8
+
+###
+
+GET http://localhost:3333/events/37804e39-3c7b-4a6b-89ae-97ebd0d76e3a/attendees
