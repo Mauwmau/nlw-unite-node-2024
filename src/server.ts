@@ -5,6 +5,7 @@ import { registerForEvent } from "./routes/register-for-event.js";
 import { getEvent } from "./routes/get-event.js";
 import { getEventAttendees } from "./routes/get-event-attendees.js";
 import { getAttendeeBadge } from "./routes/get-attendee-badge.js";
+import { checkIn } from "./routes/check-in.js";
 
 const app = fastify()
 
@@ -16,6 +17,7 @@ app.register(registerForEvent)
 app.register(getEvent)
 app.register(getEventAttendees)
 app.register(getAttendeeBadge)
+app.register(checkIn)
 
 app.listen({
   host: "0.0.0.0",
